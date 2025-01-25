@@ -14,12 +14,19 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "@rocketseat/eslint-config/next",
-    "prettier",
-  ),
+  ...compat
+    .extends(
+      "next/core-web-vitals",
+      "next/typescript",
+      "@rocketseat/eslint-config/next",
+      "prettier",
+    )
+    .concat({
+      rules: {
+        camelcase: "off",
+        "prettier/prettier": "error",
+      },
+    }),
 ];
 
 export default eslintConfig;
